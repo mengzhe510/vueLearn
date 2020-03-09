@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-09 13:27:04
- * @LastEditTime: 2020-03-09 14:09:36
+ * @LastEditTime: 2020-03-09 14:36:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue/vueLearn/vue1/src/views/Login.vue
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -30,7 +31,7 @@ export default {
               pleasehodler: "请输入姓名"
             },
             rules: {
-              require: true
+              required: true
             },
             trigger: "blur"
           },
@@ -42,7 +43,7 @@ export default {
               pleasehodler: "请输入密码"
             },
             rules: {
-              require: true
+              required: true
             },
             trigger: "blur"
           },
@@ -55,12 +56,16 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["login"]),
     validateHandler() {},
     submitHandler() {
-      if (this.$store.dispatch("login")) {
-        const path = this.$route.query.redirect || "/";
-        this.$router.push(path);
-      }
+      // this.$store.dispatch('login')
+      this.login()
+        .then(() => {
+          const path = this.$route.query.redirect || "/";
+          this.$router.push(path);
+        })
+        .catch(() => {});
     }
   }
 };

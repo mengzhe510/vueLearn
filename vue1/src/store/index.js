@@ -9,8 +9,8 @@ export default new Vuex.Store({
   },
   mutations: {
     login: (state, boolean) => {
-      console.log('state.login', state.login)
-      state.login = boolean
+      console.log('state.login', state.isLogin)
+      state.isLogin = boolean
     }
   },
   actions: {
@@ -19,7 +19,6 @@ export default new Vuex.Store({
     }) => {
       commit('login', true)
       localStorage.setItem('login', true)
-      return true
     },
     logout: ({
       commit
