@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-12 17:05:38
- * @LastEditTime: 2020-03-12 19:44:56
+ * @LastEditTime: 2020-03-12 22:13:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue/vueLearn/vue1/server/index.js
@@ -10,7 +10,7 @@ const Koa = require('koa');
 const KoaRouter = require('koa-router');
 const jwt = require('jsonwebtoken');
 const jwtAuth = require('koa-jwt');
-const secret = 'this is a secret';
+const secret = 'this is secret';
 const app = new Koa();
 const router = new KoaRouter();
 router.get('/api/login', async ctx => {
@@ -38,5 +38,20 @@ router.get('/api/login', async ctx => {
     }
   }
 })
+router.get(
+  "/api/userinfo",
+  jwtAuth({
+    secret
+  }),
+  async ctx => {
+    ctx.body = {
+      code: 1,
+      data: {
+        name: "jerry",
+        age: 20
+      }
+    };
+  }
+);
 app.use(router.routes());
 app.listen(3000)
