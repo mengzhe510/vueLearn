@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import server from '../server/index'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -16,9 +16,18 @@ export default new Vuex.Store({
   actions: {
     login: ({
       commit
-    }) => {
-      commit('login', true)
-      localStorage.setItem('login', true)
+    }, user) => {
+      return server.login(user).then(data => {
+        const {
+          code,
+          token
+        } = data.data;
+        if (code == 1) {
+          localStorage.setItem('login', token);
+          commit('login', true)
+        }
+        return code
+      })
     },
     logout: ({
       commit

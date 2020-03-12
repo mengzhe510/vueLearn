@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-09 13:27:04
- * @LastEditTime: 2020-03-09 14:36:20
+ * @LastEditTime: 2020-03-12 19:49:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue/vueLearn/vue1/src/views/Login.vue
@@ -58,12 +58,15 @@ export default {
   methods: {
     ...mapActions(["login"]),
     validateHandler() {},
-    submitHandler() {
+    submitHandler(e) {
       // this.$store.dispatch('login')
-      this.login()
-        .then(() => {
-          const path = this.$route.query.redirect || "/";
-          this.$router.push(path);
+      e.preventDefault();
+      this.login(this.model)
+        .then(code => {
+          if (code == 1) {
+            const path = this.$route.query.redirect || "/";
+            this.$router.push(path);
+          }
         })
         .catch(() => {});
     }
