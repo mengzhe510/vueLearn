@@ -39,15 +39,25 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 #nav {
-  padding: 30px;
+  position: relative;
+  padding: 12px 30px;
+  display: flex;
+  justify-content: center;
 }
 
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+}
+
+#nav button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  box-sizing: border-box;
 }
 
 #nav a.router-link-exact-active {
