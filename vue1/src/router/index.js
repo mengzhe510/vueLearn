@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-03-09 13:08:01
- * @LastEditTime: 2020-03-09 14:05:57
+ * @LastEditTime: 2020-03-12 21:28:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vue/vueLearn/vue1/src/router/index.js
@@ -31,7 +31,6 @@ const router = new vueRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.isneed) {
     const islogin = localStorage.getItem('login');
-    console.log('islogin', islogin)
     if (islogin) {
       next()
     } else {
