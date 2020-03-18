@@ -7,17 +7,12 @@
  * @FilePath: /vueLearn/vue2/src/views/Home.vue
  -->
 <template>
-  <div>
-cart
-  </div>
+  <div>cart</div>
 </template>
 
 <script>
-  export default {
-    
-  }
+export default {};
 </script>
 
 <style lang="scss" scoped>
-
 </style>
