@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-15 10:27:06
- * @LastEditTime: 2020-04-07 14:14:03
+ * @LastEditTime: 2020-04-07 15:47:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vueLearn/vue2/src/views/Home.vue
@@ -24,32 +24,33 @@
 <script>
 import VHeader from "@/components/Header";
 import GoodList from "@/components/GoodList";
+import CartAnim from "@/components/CartAnimate";
 import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   components: {
     VHeader,
-    GoodList
+    GoodList,
+    // CartAnim
   },
   created() {
     this.getGoods();
   },
   methods: {
     ...mapActions(["getGoods"]),
-      startCartAnim() {
-      // startCartAnim(el) {
+    startCartAnim(el) {
       // 创建小球动画实例，开始动画
       // const anim = this.$createCartAnim({
-      //   onTransitionend(){
+      //   onTransitionend() {
       //     anim.remove();
       //   }
       // });
-      // anim.start(el)
-      // 方式2
-      // const anim = this.$create(CartAnim, {
-      //   pos: { left: "45%", bottom: "16px" }
-      // });
       // anim.start(el);
-      // anim.$on("transitionend", anim.remove);
+      // 方式2
+      const anim = this.$create(CartAnim, {
+        pos: { left: "45%", bottom: "16px" }
+      });
+      anim.start(el);
+      anim.$on("transitionend", anim.remove);
     }
   },
   computed: {
