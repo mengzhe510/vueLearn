@@ -9,7 +9,7 @@
           <div class="title">{{item.title}}</div>
           <div class="info">
             <span>{{item.count}}人购买</span>
-            <i class="cubeic-add"></i>
+            <i class="cubeic-add" @click.stop.prevent="addCart($event, item)"></i>
           </div>
         </div>
       </router-link>
@@ -18,8 +18,17 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
-  props: ["data"]
+  props: ["data"],
+  methods: {
+    ...mapMutations(['addcart']),
+    addCart(event, item) {
+      this.addcart(item);
+      // console.log("event", event, "item", item);
+      this.$emit("cartanim", event.target);
+    }
+  }
 };
 </script>
 

@@ -8,7 +8,7 @@
     <cube-tab-bar v-model="selectLabel" :data="tabs" @change="changeHandler">
       <cube-tab v-for="(item, index) in tabs" :icon="item.icon" :label="item.value" :key="index">
         <div>{{item.label}}</div>
-        <!-- <span class="badge" v-if="item.label=='Cart'">{{cartTotal}}</span> -->
+        <span class="badge" v-if="item.label=='Cart'">{{cartTotal}}</span>
       </cube-tab>
     </cube-tab-bar>
   </div>
@@ -16,7 +16,7 @@
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-
+import {mapGetters} from 'vuex'
 export default {
   name: "App",
   components: {
@@ -52,6 +52,9 @@ export default {
     changeHandler(val) {
       this.$router.push(val);
     }
+  },
+  computed: {
+    ...mapGetters(["cartTotal"])
   }
 };
 </script>
@@ -85,5 +88,20 @@ export default {
   top: 0;
   width: 100%;
   padding-bottom: 40px;
+}
+.cube-tab {
+  position: relative;
+}
+
+span.badge {
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px;
+  min-width: 16px;
+  min-height: 16px;
+  position: absolute;
+  right: 25%;
+  top: 0;
 }
 </style>

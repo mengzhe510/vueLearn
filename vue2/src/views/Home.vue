@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-15 10:27:06
- * @LastEditTime: 2020-03-18 20:29:21
+ * @LastEditTime: 2020-04-07 14:14:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /vueLearn/vue2/src/views/Home.vue
@@ -17,7 +17,7 @@
         </router-link>
       </cube-slide-item>
     </cube-slide>
-    <good-list :data="goods"></good-list>
+    <good-list :data="goods" @cartanim="startCartAnim"></good-list>
   </div>
 </template>
 
@@ -34,7 +34,23 @@ export default {
     this.getGoods();
   },
   methods: {
-    ...mapActions(["getGoods"])
+    ...mapActions(["getGoods"]),
+      startCartAnim() {
+      // startCartAnim(el) {
+      // 创建小球动画实例，开始动画
+      // const anim = this.$createCartAnim({
+      //   onTransitionend(){
+      //     anim.remove();
+      //   }
+      // });
+      // anim.start(el)
+      // 方式2
+      // const anim = this.$create(CartAnim, {
+      //   pos: { left: "45%", bottom: "16px" }
+      // });
+      // anim.start(el);
+      // anim.$on("transitionend", anim.remove);
+    }
   },
   computed: {
     ...mapState({ slider: state => state.goods.slider }),
