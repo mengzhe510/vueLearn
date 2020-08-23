@@ -145,6 +145,7 @@
   // getElementsByTagName()    //通过标签名称
   // getElementsByName()    //通过元素的Name属性的值
   // getElementById()    //通过元素Id，唯一性
+
 // 13 宏观任务与微观任务 2
 // setTimeout(function(){
 //   console.log('1')
@@ -158,10 +159,12 @@
 // console.log('4');
 // 然后回到开头的代码。因为settimeout是宏任务，虽然先执行的他，但是他被放到了宏任务的eventqueue里面，然后代码继续往下检查看有没有微任务，检测到Promise的then函数把他放入了微任务序列。等到主线进程的所有代码执行结束后。先从微任务queue里拿回掉函数，然后微任务queue空了后再从宏任务的queue拿函数。
 // 所以正确的执行结果当然是：2，4，3，1。
+// https://www.jianshu.com/p/f1f04916408d
 
 // 14 数组slice和splice的区别？
 //splice 返回一个数组，数组里面是删除的元素，会改变原数组
 // slice是截取数组，不会改变原数组
+
 // 算法 36进制转换 1
 // descNumber 转换的数
 // 要转换成什么进制
